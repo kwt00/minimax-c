@@ -1,14 +1,16 @@
 int human = -1;
 int computer = 1;
+int p=-1;
+int c=1
 char h_choice = 'X';
 char c_choice = 'O';
 char first = 'N';
 int empt_len = 0;
 int glbest = 0;
 int board[9] = {
-1,-1,1,
-0,1,-1,
-0,1,-1
+p,c,0,
+p,0,0,
+0,0,0
 };
 int wins(int *board2, int player) {
   int win_state[8][3] = {
@@ -120,7 +122,7 @@ void aiturn() {
     minimax(depth, computer, board, &move);
   }
   setMove(move, computer);
-  printf("%d", move);
+  printf("The best move is to go to index %d", move);
   return;
 }
 void humanturn(int move) {
@@ -135,7 +137,6 @@ void humanturn(int move) {
     mmove = move;
     int can_move = setMove(mmove - 1, human);
     if (can_move == 0) {
-      // BAD MOVE
       move = -1;
     } else {
     }
@@ -143,31 +144,6 @@ void humanturn(int move) {
 }
 int main() {
   emptyCells(board);
-  // while(empt_len > 0 && gameOver() != 1){
-  //     emptyCells();
-  //     aiturn();
-  //     humanturn(1);
-  // }
-  // if(wins(human) == 1){
-  //     // render to screen
-  //     //HUMAN WINS
-  //   }
-  // else if(wins(computer) == 1){
-  //     // render to screen
-  //     //AI WINS
-  // }
-  // else{
-  //     // render the screen
-  //     // DRAW
-  // }
-
-  // balls.coord = -1;
-  // balls.marker = -1;
   aiturn();
-  // printf("%d", balls);
-  // evaluate(board);
-  // minimax(6, computer, 0, board);
-  // printf("%d", best_array[ARRAY_COUNTER]);
-  // printf("OUTCOME: %d ", best_marker_array[glbest]);
   return 0;
 }
