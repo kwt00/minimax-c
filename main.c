@@ -1,15 +1,13 @@
 int human = -1;
 int computer = 1;
-int p=-1;
-int c=1
 char h_choice = 'X';
 char c_choice = 'O';
 char first = 'N';
 int empt_len = 0;
 int glbest = 0;
 int board[9] = {
-p,c,0,
-p,0,0,
+-1,-1,0,
+0,0,0,
 0,0,0
 };
 int wins(int *board2, int player) {
@@ -122,7 +120,7 @@ void aiturn() {
     minimax(depth, computer, board, &move);
   }
   setMove(move, computer);
-  printf("The best move is to go to index %d", move);
+  printf("The best move is to go to index %d, or the %d space", move, move+1);
   return;
 }
 void humanturn(int move) {
